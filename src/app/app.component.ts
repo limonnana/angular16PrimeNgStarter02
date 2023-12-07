@@ -8,9 +8,8 @@ import { LayoutService } from './layout/service/app.layout.service';
 })
 export class AppComponent implements OnInit {
 
-    layoutService: LayoutService = new LayoutService();
-
-    constructor(private primengConfig: PrimeNGConfig) { }
+   
+    constructor(private primengConfig: PrimeNGConfig, private layoutService: LayoutService) { }
 
     ngOnInit() {
         this.primengConfig.ripple = true;
