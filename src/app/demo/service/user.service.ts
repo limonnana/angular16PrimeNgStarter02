@@ -26,8 +26,8 @@ export class UserService {
     return this.http.put<IUser>(this.resourceUrl, user);
   }
 
-  find(login: string): Observable<IUser> {
-    return this.http.get<IUser>(`${this.resourceUrl}/${login}`);
+  login(user: IUser): Observable<IUser> | null{
+    return this.http.post<IUser>(this.resourceUrl + '/login' , user);
   }
   
   users(): Observable<User[]> {
