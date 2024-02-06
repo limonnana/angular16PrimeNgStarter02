@@ -35,13 +35,12 @@ export class RegisterComponent implements OnInit {
      
         setTimeout(() => {
           this.router.navigate(['/uikit/user']);
-      }, 4000);  //4s
+      }, 3000);  //3s
       
   }
 
   private updateUser(): void {
     this.user = new User();
-   // console.log('updateUser: ' + this.editForm.get(['email'])!.value + this.user.email);
     this.user.username = this.editForm.get(['email'])!.value;
     console.log('username:' + this.user.username);
     this.user.password = this.editForm.get(['password'])!.value;

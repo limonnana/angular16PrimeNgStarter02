@@ -9,6 +9,7 @@ export interface IUser {
   langKey?: string;
   roles?: string[];
   password?: string;
+  token?: string;
 }
 
 export class User implements IUser {
@@ -22,6 +23,7 @@ export class User implements IUser {
     public country?: string,
     public langKey?: string,
     public roles?: string[],
-    public password?: string
+    public password?: string,
+    public token?: string
   ) {}
 }

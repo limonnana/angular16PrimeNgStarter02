@@ -3,16 +3,19 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AppConstants } from '../constants/app.constants';
 import { IUser, User } from '../api/user.model';
+import { ILogin } from '../api/login';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
   public resourceUrl = AppConstants.API_ENDPOINT + 'users';
 
+  public resourceAuthUrl = AppConstants.API_AUTH;
+
   constructor(private http: HttpClient) {}
 
   create(user: IUser): Observable<IUser> {
     console.log('url:' + this.resourceUrl + '/register');
-    return this.http.post<any>(this.resourceUrl + '/register', user);
+    return this.http.post<any>(this.resourceAuthUrl + '/register', user);
   }
 
   test(user: IUser):Observable<any> {
@@ -26,8 +29,8 @@ export class UserService {
     return this.http.put<IUser>(this.resourceUrl, user);
   }
 
-  login(user: IUser): Observable<IUser> | null{
-    return this.http.post<IUser>(this.resourceUrl + '/login' , user);
+  login(login: ILogin): Observable<IUser> | null{
+    return this.http.post<IUser>(this.resourceAuthUrl + '/login' , login);
   }
   
   users(): Observable<User[]> {

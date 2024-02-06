@@ -4,6 +4,7 @@ import { User } from 'src/app/demo/api/user.model';
 import { UserService } from 'src/app/demo/service/user.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Login } from 'src/app/demo/api/login';
 
 @Component({
     selector: 'app-login',
@@ -22,6 +23,7 @@ export class LoginComponent {
     valCheck: string[] = ['remember'];
 
     user!: User;
+    login!: Login;
 
     password!: string;
 
@@ -51,11 +53,14 @@ export class LoginComponent {
       }
     });*/
        
-        this.userService.login(this.user).subscribe(
+        this.userService.login(this.login).subscribe(
           data => {
-            if(data && data.id != undefined){
+            if(data && data.token){
                 console.log('SUCCESS***************' + data.id + ' ' + data.username);
-                this.router.navigate(['/']); 
+                this.user.id = data.id;
+                this.user.token = data.token;
+                 sessionStorage.setItem('sekurity-user',JSON.stringify(this.user));
+                 this.router.navigate(['/']); 
             }else{
                 console.log('WRONG Username or password***************');
                 this.router.navigate(['/auth/login']); 
@@ -67,10 +72,9 @@ export class LoginComponent {
        
     
       private updateUser(): void {
-        this.user = new User();
-       // console.log('updateUser: ' + this.editForm.get(['email'])!.value + this.user.email);
-        this.user.username = this.loginForm.get(['email'])!.value;
-        console.log('username:' + this.user.username);
-        this.user.password = this.loginForm.get(['password'])!.value;
+        this.login = new Login();
+        this.login.username = this.loginForm.get(['email'])!.value;
+        console.log('username:' + this.login.username);
+        this.login.password = this.loginForm.get(['password'])!.value;
       }
 }
