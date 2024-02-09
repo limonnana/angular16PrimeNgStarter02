@@ -17,10 +17,15 @@
             <i class="pi pi-calendar"></i>
             <span>Calendar</span>
         </button>
-        <button class="p-link layout-topbar-button">
+        <button (click)="showDialog('top-right')" class="p-link layout-topbar-button">
             <i class="pi pi-user"></i>
             <span>Profile</span>
         </button>
+        <p-dialog header="Header" [(visible)]="visible" [position]="position" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit
+            </p>
+        </p-dialog>
         <button class="p-link layout-topbar-button" [routerLink]="'/documentation'">
             <i class="pi pi-cog"></i>
             <span>Settings</span>

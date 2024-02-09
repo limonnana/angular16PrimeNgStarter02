@@ -17,4 +17,15 @@ export class AppTopBarComponent {
     @ViewChild('topbarmenu') menu!: ElementRef;
 
     constructor(public layoutService: LayoutService) { }
+
+    visible: boolean = false;
+
+    position: 'right'|'top-right'|string|undefined;
+
+    showDialog(position: string) {
+        this.position = position;
+        this.visible = true;
+    }
+
+   
 }
