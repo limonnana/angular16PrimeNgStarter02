@@ -1,7 +1,7 @@
 <div class="layout-topbar">
     <a class="layout-topbar-logo" routerLink="">
         <img src="assets/layout/images/{{layoutService.config.colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg" alt="logo">
-        <span>SAKAI</span>
+        <span>SAKAI </span>
     </a>
 
     <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
@@ -21,9 +21,9 @@
             <i class="pi pi-user"></i>
             <span>Profile</span>
         </button>
-        <p-dialog header="Header" [(visible)]="visible" [position]="position" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+        <p-dialog header="Profile" [(visible)]="visible" [position]="position" [style]="{ width: '20vw' }" [draggable]="false" [resizable]="false">
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
+               {{username}} 
             </p>
         </p-dialog>
         <button class="p-link layout-topbar-button" [routerLink]="'/documentation'">

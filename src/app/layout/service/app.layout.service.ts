@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { IUser, User } from 'src/app/demo/api/user.model';
 
 export interface AppConfig {
     inputStyle: string;
@@ -42,6 +43,7 @@ export class LayoutService {
         menuHoverActive: false
     };
 
+    
     private configUpdate = new Subject<AppConfig>();
 
     private overlayOpen = new Subject<any>();
@@ -49,6 +51,7 @@ export class LayoutService {
     configUpdate$ = this.configUpdate.asObservable();
 
     overlayOpen$ = this.overlayOpen.asObservable();
+
 
     onMenuToggle() {
         if (this.isOverlay()) {
@@ -96,5 +99,29 @@ export class LayoutService {
     onConfigUpdate() {
         this.configUpdate.next(this.config);
     }
+
+    getUserFromSession(): Observable <IUser | null>{
+        
+
+        const myObservable = new Observable(observer => {
+
+            let userFromSession : User | null | undefined =  JSON.parse(sessionStorage.getItem('sekurity-user'));
+
+            if(userFromSession){
+                userFromSession = userFromSession as User;
+            }else{
+                userFromSession = null;
+            }
+            
+            // Send data to the observer
+            observer.next(userFromSession); 
+            observer.complete();  
+          });
+          
+        
+        return myObservable;
+    }
+
+   
 
 }

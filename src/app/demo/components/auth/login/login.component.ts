@@ -22,10 +22,11 @@ export class LoginComponent {
 
     valCheck: string[] = ['remember'];
 
-    user!: User;
     login!: Login;
 
     password!: string;
+
+    user: User = new User();
 
     constructor(public layoutService: LayoutService, private fb: FormBuilder, private userService: UserService, private router: Router) { }
 
@@ -59,6 +60,7 @@ export class LoginComponent {
                 console.log('SUCCESS***************' + data.id + ' ' + data.username);
                 this.user.id = data.id;
                 this.user.token = data.token;
+                this.user.username = data.username;
                  sessionStorage.setItem('sekurity-user',JSON.stringify(this.user));
                  this.router.navigate(['/']); 
             }else{
