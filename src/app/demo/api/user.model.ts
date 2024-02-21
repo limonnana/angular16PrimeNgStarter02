@@ -7,7 +7,7 @@ export interface IUser {
   email?: string;
   country?: string;
   langKey?: string;
-  roles?: string[];
+  isAdmin?: boolean;
   password?: string;
   token?: string;
 }
@@ -22,7 +22,7 @@ export class User implements IUser {
     public email?: string,
     public country?: string,
     public langKey?: string,
-    public roles?: string[],
+    public isAdmin?: boolean,
     public password?: string,
     public token?: string
   ) {}

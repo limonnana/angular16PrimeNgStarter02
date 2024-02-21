@@ -39,21 +39,6 @@ export class LoginComponent {
   
         this.updateUser();
 
-         /*
-    this.userService.login(data).subscribe(response => {
-     if (response && response.token) {
-        localStorage.setItem('token', response.token.accessToken);
-        let date = new Date();
-        let hours = Math.round(response.token.expiresIn / 3600);
-        date.setHours(date.getHours() + hours);
-
-        localStorage.setItem('expires', JSON.stringify(date));
-
-        // Redirect the user to /home
-        this.router.navigate(['/dashboard'])
-      }
-    });*/
-       
         this.userService.login(this.login).subscribe(
           data => {
             if(data && data.token){

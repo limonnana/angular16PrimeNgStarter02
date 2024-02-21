@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs/internal/Observable';
 import { IUser, User } from 'src/app/demo/api/user.model';
 import { UserService } from 'src/app/demo/service/user.service';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
