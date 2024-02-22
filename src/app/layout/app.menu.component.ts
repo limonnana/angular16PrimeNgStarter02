@@ -10,9 +10,69 @@ export class AppMenuComponent implements OnInit {
 
     model: any[] = [];
 
+    model0: any[] = [];
+
+    model1: any[] = [];
+
+    model2: any[] = [];
+
+
     constructor(public layoutService: LayoutService) { }
 
     ngOnInit() {
+
+        this.model1 = [
+
+            {
+                label: 'Home',
+                items: [
+                    { label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/'] }
+                ]
+            },
+            {
+                label: 'UI Components',
+                items: [
+                    { label: 'Form Layout', icon: 'pi pi-fw pi-id-card', routerLink: ['/uikit/formlayout'] },
+                    { label: 'Input', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input'] },
+                    
+                ]
+            }
+        ];
+
+        this.model2 = [
+
+            {
+                label: 'Admin',
+                icon: 'pi pi-fw pi-briefcase',
+                items: [
+                    {
+                        label: 'Landing',
+                        icon: 'pi pi-fw pi-globe',
+                        routerLink: ['/landing']
+                    },
+                    {
+                        label: 'Auth',
+                        icon: 'pi pi-fw pi-user',
+                        items: [
+                            {
+                                label: 'Users',
+                                icon:  'pi pi-fw pi-user',
+                                routerLink: ['/uikit/user']
+                            }
+                        ]
+                    }
+                ]
+            }
+
+            
+
+        ];
+
+        this.model0 = this.model1.concat(this.model2);
+
+
+
+        
         this.model = [
             {
                 label: 'Home',
