@@ -1,6 +1,7 @@
 import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { LayoutService } from './service/app.layout.service';
+import { User } from '../demo/api/user.model';
 
 @Component({
     selector: 'app-menu',
@@ -16,10 +17,21 @@ export class AppMenuComponent implements OnInit {
 
     model2: any[] = [];
 
+    user: User = new User();
+
+    username: string;
+
+    isLoggedIn: boolean = false;
+
 
     constructor(public layoutService: LayoutService) { }
 
+   
     ngOnInit() {
+      this.showMenu();
+    }
+
+    showMenu(){
 
         this.model1 = [
 
@@ -68,7 +80,7 @@ export class AppMenuComponent implements OnInit {
 
         ];
 
-        this.model0 = this.model1.concat(this.model2);
+      //  this.model0 = this.model1.concat(this.model2);
 
 
 
@@ -99,7 +111,7 @@ export class AppMenuComponent implements OnInit {
                         routerLink: ['/landing']
                     },
                     {
-                        label: 'Auth',
+                        label: 'Admin',
                         icon: 'pi pi-fw pi-user',
                         items: [
                             {
@@ -182,5 +194,32 @@ export class AppMenuComponent implements OnInit {
                 ]
             }
         ];
+
+        
+        this.getUserFromSession();  
+
+            if(this.isLoggedIn){
+                this.model0 = this.model1.concat(this.model2);
+            }
+            else{
+                this.model0 = this.model1;
+            }
+        
+
     }
+
+    
+
+    getUserFromSession(){
+        this.layoutService.getUserFromSession().subscribe((response)  => {
+        this.user = response; });
+
+        if(this.user){
+        this.username = this.user.username;
+        if(this.username){
+            this.isLoggedIn = true;
+        }
+        }
+    }
+
 }

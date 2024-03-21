@@ -22,9 +22,15 @@
             <span>Profile</span>
         </button>
         <p-dialog header="Profile" [(visible)]="visible" [position]="position" [style]="{ width: '20vw' }" [draggable]="false" [resizable]="false">
-            <p>
+            <p *ngIf="isLoggedIn; else loggedOut">
                {{username}} 
             </p>
+            <p>
+               <a routerLink="/aut/logout">Logout</a> 
+            </p>
+            <ng-template #loggedOut>
+            <a routerLink="/auth/login"> Login </a> or <a routerLink="/auth/register">Register</a>
+            </ng-template>
         </p-dialog>
         <button class="p-link layout-topbar-button" [routerLink]="'/documentation'">
             <i class="pi pi-cog"></i>

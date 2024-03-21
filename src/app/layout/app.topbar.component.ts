@@ -31,6 +31,8 @@ export class AppTopBarComponent {
 
     username: string;
 
+    isLoggedIn: boolean = false;
+
 
 
     showDialog(position: string) {
@@ -44,7 +46,16 @@ export class AppTopBarComponent {
 
         if(this.user){
         this.username = this.user.username;
+        if(this.username){
+            this.isLoggedIn = true;
         }
+        }
+    }
+
+    logout(){
+        this.layoutService.logout();
+        this.isLoggedIn = false;
+        this.router.navigate(['/punjab']); 
     }
 
    

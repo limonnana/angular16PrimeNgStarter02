@@ -122,6 +122,11 @@ export class LayoutService {
         return myObservable;
     }
 
+    logout(){
+        sessionStorage.removeItem('sekurity-user');
+       
+    }
+
    
 
 }
