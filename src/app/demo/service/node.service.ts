@@ -30,4 +30,7 @@ export class NodeService {
             .toPromise()
             .then(res => res.data as TreeNode[]);
     }
+    update(){
+        
+    }
 }
