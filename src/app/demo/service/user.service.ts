@@ -34,7 +34,8 @@ export class UserService {
   }
   
   users(): Observable<User[]> {
-    return this.http.get<User[]>(this.resourceUrl + '/users');
+    const headers = { 'Authorization': 'Bearer my-token' }
+    return this.http.get<User[]>(this.resourceUrl + '/users', { headers });
   }
 
   delete(login: string): Observable<{}> {

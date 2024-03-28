@@ -16,7 +16,7 @@ export class AuthService {
 
     if(this.user){
 
-       if(this.user.isAdmin){
+       if(this.user.admin){
          this.role = Role.ADMIN; 
        }
     }

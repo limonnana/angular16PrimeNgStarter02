@@ -23,6 +23,8 @@ export class AppMenuComponent implements OnInit {
 
     isLoggedIn: boolean = false;
 
+    isAdmin: boolean = false;
+
 
     constructor(public layoutService: LayoutService) { }
 
@@ -63,7 +65,7 @@ export class AppMenuComponent implements OnInit {
                         routerLink: ['/landing']
                     },
                     {
-                        label: 'Auth',
+                        label: 'Admin',
                         icon: 'pi pi-fw pi-user',
                         items: [
                             {
@@ -79,10 +81,6 @@ export class AppMenuComponent implements OnInit {
             
 
         ];
-
-      //  this.model0 = this.model1.concat(this.model2);
-
-
 
         
         this.model = [
@@ -198,7 +196,7 @@ export class AppMenuComponent implements OnInit {
         
         this.getUserFromSession();  
 
-            if(this.isLoggedIn){
+            if(this.isLoggedIn && this.isAdmin){
                 this.model0 = this.model1.concat(this.model2);
             }
             else{
@@ -216,9 +214,12 @@ export class AppMenuComponent implements OnInit {
 
         if(this.user){
         this.username = this.user.username;
-        if(this.username){
+            if(this.username){
             this.isLoggedIn = true;
-        }
+            if(this.user.admin){
+                this.isAdmin = true;
+            }
+            }
         }
     }
 

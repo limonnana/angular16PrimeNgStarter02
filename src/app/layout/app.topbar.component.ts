@@ -2,6 +2,8 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from "./service/app.layout.service";
 import { User } from '../demo/api/user.model';
+import {Router} from '@angular/router'; 
+
 
 @Component({
     selector: 'app-topbar',
@@ -17,7 +19,7 @@ export class AppTopBarComponent {
 
     @ViewChild('topbarmenu') menu!: ElementRef;
 
-    constructor(public layoutService: LayoutService) { }
+    constructor(public layoutService: LayoutService, private router:Router) { }
 
     ngOnInit(): void {
         this.getUserFromSession();
@@ -53,10 +55,19 @@ export class AppTopBarComponent {
     }
 
     logout(){
+        this.redirectTo("/auth/login");
         this.layoutService.logout();
         this.isLoggedIn = false;
-        this.router.navigate(['/punjab']); 
     }
+
+    reLoad(){
+        this.router.navigate([this.router.url])
+      }
+
+    redirectTo(uri: string) {
+        this.router.navigateByUrl('/', { skipLocationChange: false }).then(() => {
+          this.router.navigate([uri])});
+      }
 
    
 }

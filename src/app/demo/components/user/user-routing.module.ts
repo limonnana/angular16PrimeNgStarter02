@@ -11,7 +11,7 @@ const routes: Routes = [
       path: '', component: UserComponent,
       canActivate: [hasRoleGuard],
       data: {
-        roles: [ Role.ADMIN ]
+        roles: [ Role.ADMIN]
       }
   },
 ];

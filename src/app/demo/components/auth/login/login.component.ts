@@ -42,15 +42,17 @@ export class LoginComponent {
         this.userService.login(this.login).subscribe(
           data => {
             if(data && data.token){
-                console.log('SUCCESS***************' + data.id + ' ' + data.username);
+                console.log('SUCCESS***************' + data.admin + ' ' + data.username);
                 this.user.id = data.id;
                 this.user.token = data.token;
                 this.user.username = data.username;
-                 sessionStorage.setItem('sekurity-user',JSON.stringify(this.user));
-                 this.router.navigate(['/']); 
+                this.user.admin = data.admin;
+                sessionStorage.setItem('sekurity-user',JSON.stringify(this.user));
+                this.router.navigate(['/']); 
             }else{
                 console.log('WRONG Username or password***************');
-                this.router.navigate(['/auth/login']); 
+                alert("Wrong username or password");
+                this.router.navigate(['/auth/access']); 
             }
         })
     }
