@@ -7,11 +7,15 @@ import { ILogin } from '../api/login';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  public resourceUrl = AppConstants.API_ENDPOINT + 'users';
+  public resourceUrl = AppConstants.API_ENDPOINT;
 
   public resourceAuthUrl = AppConstants.API_AUTH;
 
   constructor(private http: HttpClient) {}
+
+  user: User;
+
+  token: any;
 
   create(user: IUser): Observable<IUser> {
     console.log('url:' + this.resourceUrl + '/register');
@@ -34,8 +38,18 @@ export class UserService {
   }
   
   users(): Observable<User[]> {
-    const headers = { 'Authorization': 'Bearer my-token' }
+    this.user = JSON.parse(sessionStorage.getItem('sekurity-user'));
+    this.token = this.user.token;
+    console.log('url:' + this.resourceUrl + '/users');
+    console.log('token:' + this.token);
+
+
+    const headers = { 'Authorization': 'Bearer ' + this.token }
     return this.http.get<User[]>(this.resourceUrl + '/users', { headers });
+  }
+
+  getUserById(id: string): Observable<IUser>{
+    return this.http.get<IUser>(this.resourceUrl + '/getuserbyid' , id);
   }
 
   delete(login: string): Observable<{}> {

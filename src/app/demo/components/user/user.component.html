@@ -5,15 +5,28 @@
                 <th>Id</th>
                 <th>Username</th>
                 <th>Password</th>
-             </tr>
+                <th>Edit</th>
+            </tr>
         </ng-template>
         <ng-template pTemplate="body" let-user>
             <tr>
                 <td>{{ user.id }}</td>
                 <td>{{ user.username }}</td>
                 <td>{{ user.password }}</td>
+                
+            <td>
+                <button 
+                pButton  [routerLink]="['/uikit/user/edit',user.id]"
+                type="button" 
+                label="Edit" 
+                icon="pi pi-pencil" 
+                class="p-button-text"
+            ></button> 
+            </td>
             </tr>
         </ng-template>
     </p-table>
 </div>
+
+
 

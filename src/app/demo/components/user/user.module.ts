@@ -4,6 +4,8 @@ import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './user.component';
 import { DataViewModule } from 'primeng/dataview';
 import { TableModule } from 'primeng/table';
+import {ButtonModule} from 'primeng/button';
+
 
 @NgModule({
   declarations: [
@@ -13,7 +15,8 @@ import { TableModule } from 'primeng/table';
     CommonModule,
     UserRoutingModule, 
     TableModule,
-    DataViewModule
+    DataViewModule,
+    ButtonModule 
   ]
 })
 export class UserModule { }
