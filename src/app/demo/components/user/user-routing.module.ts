@@ -16,7 +16,7 @@ const routes: Routes = [
       }
   },
   {
-    path: 'edit/:userid', component: UsereditComponent,
+    path: 'edit/:username', component: UsereditComponent,
     canActivate: [hasRoleGuard],
     data: {
       roles: [ Role.ADMIN]

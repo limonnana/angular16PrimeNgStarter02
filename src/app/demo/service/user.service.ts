@@ -14,6 +14,7 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   user: User;
+  username: string;
 
   token: any;
 
@@ -48,12 +49,23 @@ export class UserService {
     return this.http.get<User[]>(this.resourceUrl + '/users', { headers });
   }
 
-  getUserById(id: string): Observable<IUser>{
-    return this.http.get<IUser>(this.resourceUrl + '/getuserbyid' , id);
+  getUserByUsername(username: string): Observable<IUser>{
+    this.user = JSON.parse(sessionStorage.getItem('sekurity-user'));
+    this.token = this.user.token;
+    const headers = { 'Authorization': 'Bearer ' + this.token };
+    this.username = username;
+    return this.http.get<IUser>(this.resourceUrl + `/getuserbyusername/${username}` , { headers });
   }
 
   delete(login: string): Observable<{}> {
     return this.http.delete(`${this.resourceUrl}/${login}`);
+  }
+
+  getUserToken(): any{
+    this.user = JSON.parse(sessionStorage.getItem('sekurity-user'));
+    this.token = this.user.token;
+    const headers = { 'Authorization': 'Bearer ' + this.token }
+    return headers;
   }
 
   
