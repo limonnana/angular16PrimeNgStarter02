@@ -31,7 +31,10 @@ export class UserService {
   }
 
   update(user: IUser): Observable<IUser> {
-    return this.http.put<IUser>(this.resourceUrl, user);
+    this.user = JSON.parse(sessionStorage.getItem('sekurity-user'));
+    this.token = this.user.token;
+    const headers = { 'Authorization': 'Bearer ' + this.token }
+    return this.http.put<IUser>(this.resourceUrl + '/update', user, { headers });
   }
 
   login(login: ILogin): Observable<IUser> | null{

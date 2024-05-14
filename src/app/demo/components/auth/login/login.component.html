@@ -2,6 +2,21 @@
     <div class="flex flex-column align-items-center justify-content-center">
         <img src="assets/layout/images/{{layoutService.config.colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg" alt="Sakai logo" class="mb-5 w-6rem flex-shrink-2">                
         
+
+        <p-dialog 
+        header=" ERROR !" 
+        [(visible)]="visible" 
+        [modal]="true" 
+        [style]="{ width: '25rem' }">
+         <div class="inline-flex align-items-center justify-content-center gap-2">
+            <i class="pi pi-exclamation-circle text-6xl text-primary-500"></i>
+            <p>Wrong username or password</p>
+            <p>Are you <a routerLink="/auth/register">Registered</a> ? </p>
+        </div>
+        </p-dialog>
+
+
+
             <div class="w-full surface-card py-8 px-5 sm:px-8" style="border-radius:7px">
                 <div class="text-center mb-5">
                     <div class="text-900 text-3xl font-medium mb-3">Welcome !</div>

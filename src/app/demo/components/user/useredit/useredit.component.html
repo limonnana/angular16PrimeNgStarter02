@@ -1,40 +1,51 @@
 
 		<div class="card">
-
+			<form  name="userForm" role="form" [formGroup]="userForm" (ngSubmit)="save()">
+            <div class="field">
+				<div class="col-12 mb-2 lg:col-4 lg:mb-0">
+					<span class="p-input-icon-left">
+                        <i class="pi pi-user"></i>
+						<input type="text" formControlName="name" pInputText placeholder="Name"/>
+						
+					</span>
+				</div>
+            </div>
 
             <div class="field">
+				<div class="col-12 mb-2 lg:col-4 lg:mb-0">
+					<span class="p-input-icon-left">
+                        <i class="pi pi-user"></i>
+						<input type="text" formControlName="lastName" pInputText placeholder="Last Name"/>
+						
+					</span>
+				</div>
+            </div>
+
+			<div class="field">
 				<div class="col-12 mb-2 lg:col-4 lg:mb-0">
 					<span class="p-input-icon-left">
 						<i class="pi pi-phone"></i>
-						<input type="text" pInputText placeholder="Email or Phone"/>
-					</span>
-				</div>
-            </div>
-            <div class="field">
-				<div class="col-12 mb-2 lg:col-4 lg:mb-0">
-					<span class="p-input-icon-left">
-                        <i class="pi pi-user"></i>
-						<input type="text" pInputText placeholder="Name"/>
-						
+						<input type="text" formControlName="phone" pInputText placeholder=" Phone"/>
 					</span>
 				</div>
             </div>
 
-            <div class="field">
+			<div class="field">
 				<div class="col-12 mb-2 lg:col-4 lg:mb-0">
 					<span class="p-input-icon-left">
-                        <i class="pi pi-user"></i>
-						<input type="text" pInputText placeholder="Last Name"/>
-						
+						<i class="pi pi-inbox"></i>
+						<input type="text" formControlName="email" pInputText placeholder=" Email"/>
 					</span>
 				</div>
             </div>
+
             <div class="field">
                 <div class="col-12 mb-2 lg:col-4 lg:mb-0">
               <button pButton pRipple label=" &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; Save  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;   " class="p-button-lg" (click)="save()"></button>
             </div>
+		
             </div>
-
+		</form>
         </div>    
 
 

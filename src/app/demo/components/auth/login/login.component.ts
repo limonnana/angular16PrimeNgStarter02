@@ -20,6 +20,8 @@ import { Login } from 'src/app/demo/api/login';
 })
 export class LoginComponent {
 
+    visible: boolean = false;
+
     valCheck: string[] = ['remember'];
 
     login!: Login;
@@ -40,21 +42,27 @@ export class LoginComponent {
         this.updateUser();
 
         this.userService.login(this.login).subscribe(
-          data => {
-            if(data && data.token){
-                console.log('SUCCESS***************' + data.admin + ' ' + data.username);
-                this.user.id = data.id;
-                this.user.token = data.token;
-                this.user.username = data.username;
-                this.user.admin = data.admin;
+
+            {
+            next: (data: User) => { 
+                this.user = data;
+                console.log('SUCCESS***************' + this.user.admin + ' ' + this.user.username);
+                
                 sessionStorage.setItem('sekurity-user',JSON.stringify(this.user));
                 this.router.navigate(['/']); 
-            }else{
+              },
+              error: () => { 
+                console.log(Error);
                 console.log('WRONG Username or password***************');
-                alert("Wrong username or password");
-                this.router.navigate(['/auth/access']); 
+                this.visible = true;
+              }, 
+
             }
-        })
+
+
+
+
+         );
     }
           
         

@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
       data => console.log('SUCCESS***************' + data.id + ' ' + data.username));
      
         setTimeout(() => {
-          this.router.navigate(['/uikit/user']);
+          this.router.navigate(['/auth/login']);
       }, 3000);  //3s
       
   }
