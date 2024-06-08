@@ -36,6 +36,9 @@
             <span>Settings</span>
         </button>
        
+        <button (click)="changeLang('en')" style="border:0px; background-color: white;"> <img src="assets/demo/images/flag/english.png" width="30"></button>
+        <button (click)="changeLang('es')" style="border:0px; background-color: white;"><img src="assets/demo/images/flag/spanish.png" width="30"> </button>
+        {{ 'es.apply' | translate }}
            
     </div>
 </div>

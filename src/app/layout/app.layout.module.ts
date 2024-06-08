@@ -18,6 +18,9 @@ import { AppConfigModule } from './config/config.module';
 import { AppSidebarComponent } from "./app.sidebar.component";
 import { AppLayoutComponent } from "./app.layout.component";
 import { DialogModule } from 'primeng/dialog';
+import {TranslateModule} from '@ngx-translate/core';
+
+
 
 @NgModule({
     declarations: [
@@ -41,7 +44,8 @@ import { DialogModule } from 'primeng/dialog';
         RippleModule,
         RouterModule,
         DialogModule,
-        AppConfigModule
+        AppConfigModule,
+        TranslateModule.forRoot()
     ],
     exports: [AppLayoutComponent]
 })

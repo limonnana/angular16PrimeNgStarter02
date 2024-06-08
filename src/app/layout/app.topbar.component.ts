@@ -2,8 +2,9 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from "./service/app.layout.service";
 import { User } from '../demo/api/user.model';
-import {Router} from '@angular/router'; 
-
+import {Router} from '@angular/router';
+import { PrimeNGConfig } from 'primeng/api'; 
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-topbar',
@@ -19,10 +20,11 @@ export class AppTopBarComponent {
 
     @ViewChild('topbarmenu') menu!: ElementRef;
 
-    constructor(public layoutService: LayoutService, private router:Router) { }
+    constructor(public translate: TranslateService, public layoutService: LayoutService, private router:Router, public primengConfig: PrimeNGConfig) { }
 
     ngOnInit(): void {
         this.getUserFromSession();
+       
     }
 
     visible: boolean = false;
@@ -68,6 +70,9 @@ export class AppTopBarComponent {
         this.router.navigateByUrl('/', { skipLocationChange: false }).then(() => {
           this.router.navigate([uri])});
       }
-
+      
+      changeLang(lang: string) {
+        this.translate.use(lang);
+     }
    
 }

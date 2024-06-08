@@ -42,8 +42,8 @@ export class UsereditComponent {
   }
 
   userForm = this.fb.group({
-    name: ['', [Validators.minLength(10), Validators.maxLength(35)]],
-    lastName: ['', [Validators.minLength(10), Validators.maxLength(35)]],
+    name: ['', [Validators.minLength(4), Validators.maxLength(35)]],
+    lastName: ['', [Validators.minLength(4), Validators.maxLength(35)]],
     phone: ['', [Validators.minLength(10), Validators.maxLength(10)]],
     email: ['', [Validators.minLength(10), Validators.maxLength(254)]],
 });
