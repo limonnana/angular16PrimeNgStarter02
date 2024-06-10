@@ -1,0 +1,16 @@
+.popup-container {
+    display: inline-block;
+    position: relative;
+}
+
+.popup-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    transform: translateX(-50%);
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

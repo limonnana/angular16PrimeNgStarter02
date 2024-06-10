@@ -31,14 +31,39 @@
             <a routerLink="/auth/login"> Login </a> or <a routerLink="/auth/register">Register</a>
             </ng-template>
         </p-dialog>
+      
+        <div class="popup-container" id="popupContainer">
+        <p *ngIf="isEnglishDefault">
+            <button ((mouseover))="changeLang('en')" style="border:0px; background-color: white;"> <img src="assets/demo/images/flag/english.png" width="30"> EN</button>
+        </p>
+        <p *ngIf="isEnglishDefault==false">
+        <button (mouseover)="changeLang('es')" style="border:0px; background-color: white;"><img src="assets/demo/images/flag/spanish.png" width="30"> </button>
+        {{ 'es.apply' | translate }}
+        </p>
+
+            <div class="popup-content" id="popupContent">
+                Hey Geek, <br />
+                Welcome to GeeksforGeeks!!
+            </div>
+        </div>
+
         <button class="p-link layout-topbar-button" [routerLink]="'/documentation'">
             <i class="pi pi-cog"></i>
             <span>Settings</span>
         </button>
-       
-        <button (click)="changeLang('en')" style="border:0px; background-color: white;"> <img src="assets/demo/images/flag/english.png" width="30"></button>
-        <button (click)="changeLang('es')" style="border:0px; background-color: white;"><img src="assets/demo/images/flag/spanish.png" width="30"> </button>
-        {{ 'es.apply' | translate }}
-           
+
     </div>
 </div>
+<script>
+    const popupContainer = document.getElementById('popupContainer');
+    const popupContent = document.getElementById('popupContent');
+    
+    popupContainer.addEventListener
+        ('mouseover', function () {
+            popupContent.style.display = 'block';
+        });
+    popupContainer.addEventListener
+        ('mouseout', function () {
+            popupContent.style.display = 'none';
+        });
+</script>

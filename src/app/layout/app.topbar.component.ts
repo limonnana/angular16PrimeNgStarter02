@@ -6,9 +6,11 @@ import {Router} from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api'; 
 import { TranslateService } from '@ngx-translate/core';
 
+
 @Component({
     selector: 'app-topbar',
-    templateUrl: './app.topbar.component.html'
+    templateUrl: './app.topbar.component.html',
+    styleUrl: './app.topbar.component.scss'
 })
 export class AppTopBarComponent {
 
@@ -24,7 +26,6 @@ export class AppTopBarComponent {
 
     ngOnInit(): void {
         this.getUserFromSession();
-       
     }
 
     visible: boolean = false;
@@ -36,6 +37,8 @@ export class AppTopBarComponent {
     username: string;
 
     isLoggedIn: boolean = false;
+
+    isEnglishDefault = true;
 
 
 
@@ -50,6 +53,11 @@ export class AppTopBarComponent {
 
         if(this.user){
         this.username = this.user.username;
+        this.changeLang(this.user.langKey);
+        if(this.user.langKey == 'es'){
+            this.isEnglishDefault = false;
+        }
+
         if(this.username){
             this.isLoggedIn = true;
         }
