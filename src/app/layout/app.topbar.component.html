@@ -32,38 +32,16 @@
             </ng-template>
         </p-dialog>
       
-        <div class="popup-container" id="popupContainer">
-        <p *ngIf="isEnglishDefault">
-            <button ((mouseover))="changeLang('en')" style="border:0px; background-color: white;"> <img src="assets/demo/images/flag/english.png" width="30"> EN</button>
-        </p>
-        <p *ngIf="isEnglishDefault==false">
-        <button (mouseover)="changeLang('es')" style="border:0px; background-color: white;"><img src="assets/demo/images/flag/spanish.png" width="30"> </button>
-        {{ 'es.apply' | translate }}
-        </p>
+            <button  class="p-link layout-topbar-button" [routerLink]="'/pages/settings'" style="border:0px; background-color: white;">
+                 <img src="assets/demo/images/flag/english.png" width="30"> 
+             </button>
+       
+        
 
-            <div class="popup-content" id="popupContent">
-                Hey Geek, <br />
-                Welcome to GeeksforGeeks!!
-            </div>
-        </div>
-
-        <button class="p-link layout-topbar-button" [routerLink]="'/documentation'">
+        <button class="p-link layout-topbar-button" [routerLink]="'/pages/settings'">
             <i class="pi pi-cog"></i>
             <span>Settings</span>
         </button>
 
     </div>
 </div>
-<script>
-    const popupContainer = document.getElementById('popupContainer');
-    const popupContent = document.getElementById('popupContent');
-    
-    popupContainer.addEventListener
-        ('mouseover', function () {
-            popupContent.style.display = 'block';
-        });
-    popupContainer.addEventListener
-        ('mouseout', function () {
-            popupContent.style.display = 'none';
-        });
-</script>
